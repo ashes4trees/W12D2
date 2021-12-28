@@ -21,12 +21,12 @@ export const receiveSessionErrors = errors => ({
 
 export const login = user => dispatch => 
     SessionApiUtil.login(user)
-    .then(user => dispatch(receiveCurrentUser(user)), errors => dispatch(receiveSessionErrors(errors)) );
+    .then(user => dispatch(receiveCurrentUser(user)), errors => dispatch(receiveSessionErrors(errors.responseJSON)) );
 
 export const logout = () => dispatch => 
     SessionApiUtil.logout()
-    .then( () => dispatch(logoutCurrentUser()), errors => dispatch(receiveSessionErrors(errors)) );
+        .then(() => dispatch(logoutCurrentUser()), errors => dispatch(receiveSessionErrors(errors.responseJSON)) );
 
 export const signup = user => dispatch => 
     SessionApiUtil.signup(user)
-    .then(user => receiveCurrentUser(user), errors => dispatch(receiveSessionErrors(errors)));
+        .then(user => receiveCurrentUser(user), errors => dispatch(receiveSessionErrors(errors.responseJSON)));
