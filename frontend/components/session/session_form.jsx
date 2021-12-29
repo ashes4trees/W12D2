@@ -28,14 +28,14 @@ class SessionForm extends React.Component {
         const text = this.props.formType === 'signup' ? 'Sign Up!' : 'Login'
         const altText = this.props.formType === 'signup' ? 'Login' : 'Sign up'
         const link = this.props.formType === 'signup' ? '/login' : '/signup'
-        debugger
         
+        const errors = this.props.errors.map( (error, idx) =>  <li key={idx}>{error}</li>)
         
         return (
             <div className='session-form'>
                 <h2>{text}</h2>
                 <Link to={link}>{altText} instead</Link>
-                <ul>{this.props.errors.session.map(error => <li key={error.id}>{error}</li>)}</ul>
+                <ul>{ errors }</ul>
                 <form>
                     <label>Username:
                         <input
