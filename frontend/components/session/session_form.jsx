@@ -25,7 +25,7 @@ class SessionForm extends React.Component {
     }
 
     render () {
-        const text = this.props.formType === 'signup' ? 'Sign Up!' : 'Login'
+        // const text = this.props.formType === 'signup' ? 'Sign Up!' : 'Login'
         const altText = this.props.formType === 'signup' ? 'Login' : 'Sign up'
         const link = this.props.formType === 'signup' ? '/login' : '/signup'
         
@@ -33,7 +33,7 @@ class SessionForm extends React.Component {
         
         return (
             <div className='session-form'>
-                <h2>{text}</h2>
+                <h2>{this.props.action}</h2>
                 <Link to={link}>{altText} instead</Link>
                 <ul>{ errors }</ul>
                 <form>
@@ -53,7 +53,7 @@ class SessionForm extends React.Component {
                         />
                     </label>
 
-                    <button onClick={this.handleSubmit}>{text}</button>
+                    <button onClick={this.handleSubmit}>{this.props.action}</button>
                 </form>
 
             </div>
